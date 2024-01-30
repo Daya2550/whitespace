@@ -1,0 +1,44 @@
+
+    <style>
+        #video-frame {
+           border-radius: 10px;
+            width: 560px;
+            height: 315px;
+            display: none;
+        }
+        #closeVideo{
+            width: 100%;
+            border-radius: 5px;
+            color: red;
+            background-color:beige;
+            font-weight: bold;
+        }
+    </style>
+<body>
+  
+    <button onclick="playVideo('3mwa71eMxz0?si=VSm1HyJz_oLudEry')">Play Video </button>
+    <button onclick="playVideo('video2')">Play Video 2</button>
+    <button onclick="playVideo('video3')">Play Video 3</button>
+    
+    <div id="video-frame">
+        <iframe id="video-player" width="560" height="315" src="" frameborder="0" allowfullscreen></iframe>
+        <button id="closeVideo" onclick="closeVideo()">Close</button>
+    </div>
+    
+    <script>
+        function playVideo(videoId) {
+            var videoFrame = document.getElementById('video-frame');
+            var videoPlayer = document.getElementById('video-player');
+            videoPlayer.src = 'https://www.youtube.com/embed/' + videoId;
+            videoFrame.style.display = 'block';
+        }
+        
+        function closeVideo() {
+            var videoFrame = document.getElementById('video-frame');
+            var videoPlayer = document.getElementById('video-player');
+            videoPlayer.src = '';
+            videoFrame.style.display = 'none';
+        }
+    </script>
+</body>
+</html>

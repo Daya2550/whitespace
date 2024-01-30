@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .video-frame {
+      width: 95%;
+      height: 48rem;
+      overflow: hidden;
+      position: relative;
+    }
+    
+  
+    .video-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    
+    video {
+      width: 100%;
+      height: 100%;
+    }
+    
+    .btn-container {
+      text-align: center;
+      margin-top: 10px;
+    }
+    
+    button {
+      display:inline;
+      border-radius: 10px;
+      width: 47%;
+      padding: 10px;
+      margin: 0 5px;
+    }
+  </style>
+</head>
+<body>
+  <center>
+    <div class="video-frame">
+      <div class="video-container">
+        <iframe id="video-player" width="100%" height="100%" allowfullscreen></iframe>
+      </div>
+    </div>
+    
+    <div class="btn-container">
+      <button onclick="playPreviousVideo()">Previous</button>
+      <button onclick="playNextVideo()">Next</button>
+    </div>
+  </center>
+  
+  <script>
+    var videos = [
+      'https://www.youtube.com/embed/bT70Qqgn-qY?autoplay=1',
+      'path/to/local/video.mp4',
+      'https://www.instagram.com/p/NHdsNjUwZGZ2Y3I1/embed',
+   ];
+    
+    var currentIndex = Math.floor(Math.random() * videos.length); 
+    
+    function playNextVideo() {
+      currentIndex = (currentIndex + 1) % videos.length; 
+      playVideo();
+    }
+    
+    function playPreviousVideo() {
+      currentIndex = (currentIndex - 1 + videos.length) % videos.length; 
+      playVideo();
+    }
+    
+    function playVideo() {
+      var videoPlayer = document.getElementById('video-player');
+      videoPlayer.src = videos[currentIndex];
+    }
+    
+    playVideo();
+  </script>
+</body>
+</html>
